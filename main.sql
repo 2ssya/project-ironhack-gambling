@@ -16,3 +16,24 @@ JOIN account
 ON customer.CustId = account.CustId;
 
 -- Question 04:
+SELECT b.BetDate, p.product, SUM(b.Bet_Amt) AS total_bet
+FROM betting b
+JOIN product p 
+ON b.ClassId = p.CLASSID 
+AND b.CategoryId = p.CATEGORYID
+GROUP BY b.BetDate, p.product
+ORDER BY b.BetDate, total_bet DESC;
+-- Question 05:
+SELECT b.BetDate, p.product, SUM(b.Bet_Amt) AS total_bet
+FROM betting b
+JOIN product p 
+ON p.CLASSID = b.ClassID
+AND b.CategoryId = p.CATEGORYID
+WHERE p.product = "sportsbook" AND b. BetDate >=  "01/11/2012"
+GROUP BY  p.product, b.BetDate
+ORDER BY b.BetDate;
+
+
+
+
+
