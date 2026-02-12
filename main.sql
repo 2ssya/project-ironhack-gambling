@@ -32,6 +32,19 @@ AND b.CategoryId = p.CATEGORYID
 WHERE p.product = "sportsbook" AND b. BetDate >=  "01/11/2012"
 GROUP BY  p.product, b.BetDate
 ORDER BY b.BetDate;
+-- Question 06:
+SELECT c.CustomerGroup,a.CurrencyCode,p.Product,SUM(b.Bet_Amt) AS TotalBetAmt
+FROM customer c
+JOIN account a
+ON c.CustId = a.CustId
+JOIN betting b
+ON a.AccountNo = b.AccountNo
+JOIN product p
+ON b.ClassId = p.ClassId
+AND b.CategoryId = p.CategoryId
+WHERE b.BetDate >= "01/12/2012"
+GROUP BY c.CustomerGroup,a.CurrencyCode,p.Product
+ORDER BY c.CustomerGroup,a.CurrencyCode,p.Product;
 
 
 
